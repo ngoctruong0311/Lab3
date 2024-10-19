@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .subject {
+            display: flex;
+        }
+
+        .lessons h1 {
+            margin: 0;
+        }
+
+        .lessons {
+            height: 640px;
+            width: 250px;
+            border-right: 1px solid #ccc;
+            padding: 10px 20px;
+        }
+
+        .lessons ul {
+            padding: 0;
+        }
+
+        .lessons ul li {
+            list-style: none;
+            width: calc(100% - 40px);
+            border: 1px solid #ccc;
+            padding: 15px 20px;
+            border-bottom: none;
+            color: rgb(0, 81, 255);
+            cursor: pointer;
+        }
+
+        .lessons ul li:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .lessons ul li:last-child {
+            border-bottom: 1px solid #ccc;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .lesson-content {
+            width: calc(100% - 250px);
+            padding: 10px 20px;
+        }
+
+        .lesson-content h1 {
+            margin: 0;
+        }
+
+        .info {
+            height: calc(100vh - 200px);
+            width: 100%;
+        }
+
+        .info iframe {
+            height: 100%;
+            width: 100%;
+            display: none; /* Hide all iframes initially */
+        }
+
+        .return {
+            border-top: 1px solid #ccc;
+        }
+
+        .return button {
+            position: absolute;
+            right: 40px;
+            bottom: 15px;
+            padding: 12px 20px;
+            background: rgb(0, 81, 255);
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="subject">
+        <div class="lessons">
+            <h1>Lessons</h1>
+            <ul> 
+                <li onclick="showIframe('intro')">1. Introduction</li>
+                <li onclick="showIframe('lessons')">2. Lessons</li>
+                <li>3. Exercise</li>
+                <li>4. References</li>
+            </ul>
+        </div>
+        <div class="lesson-content">
+            <h1>Lesson Content</h1>
+            <div class="info">
+                <iframe id="intro" src="./pdf/intro-html.pdf" frameborder="0"></iframe>
+                <iframe id="lessons" src="./pdf/bt-html.pdf" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="return">
+        <a href="#"><button>Back To List</button></a>
+    </div>
+
+    <script>
+        function showIframe(id) {
+            const iframes = document.querySelectorAll('.info iframe');
+            iframes.forEach(iframe => iframe.style.display = 'none'); // Hide all iframes
+            const selectedIframe = document.getElementById(id);
+            if (selectedIframe) {
+                selectedIframe.style.display = 'block'; // Show selected iframe
+            }
+        }
+
+        // Show the Introduction iframe by default
+        showIframe('intro');
+    </script>
+</body>
+</html>
